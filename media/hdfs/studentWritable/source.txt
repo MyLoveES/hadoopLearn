@@ -1,0 +1,7 @@
+zhangsan 13
+lisi 28
+wangwu 34
+zhaoliu 22
+qianqi 17
+liuba 18
+husan 29

@@ -66,6 +66,13 @@ public class HdfsTest {
     }
 
     @Test
+    public void testRMdir() throws Exception  {
+        boolean flag = fs.deleteOnExit(new Path("/duanyao/hadoop/mkdirTest"));
+        System.out.println(flag ? "删除成功" : "删除失败");
+    }
+
+
+    @Test
     public void testfilesFile() throws Exception {
         String src = "/duanyao/hadoop/In.txt";
         boolean b = fs.isDirectory(new Path(src));
