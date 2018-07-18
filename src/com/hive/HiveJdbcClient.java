@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.apache.log4j.Logger;
+import java.util.Date;
 /**
  * Handle data through hive on eclipse
  */
@@ -19,6 +20,7 @@ public class HiveJdbcClient {
     private static final Logger log = Logger.getLogger(HiveJdbcClient.class);
     public static void main(String[] args) {
         try {
+            Date date = new Date();
             Class.forName(driverName);
             //Connection conn = DriverManager.getConnection(url, user, password);
             //默认使用端口10000, 使用默认数据库，用户名密码默认
@@ -27,6 +29,8 @@ public class HiveJdbcClient {
             //System.out.println("conn success!");
             // 创建的表名
             String tableName = "testHiveDriverTable";
+            sql = "drop TABLE "+tableName;
+            stmt.execute(sql);
             //创建
             sql = "create table " + tableName + " (key int, value string)  row format delimited fields terminated by '\t'";
             stmt.executeUpdate(sql);
@@ -67,6 +71,8 @@ public class HiveJdbcClient {
             while (res.next()) {
                 System.out.println(res.getString(1));
             }
+            Date date1 = new Date();
+            System.out.println(date1.getTime()-date.getTime());
             conn.close();
             conn = null;
         } catch (ClassNotFoundException e) {

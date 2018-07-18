@@ -38,7 +38,7 @@ public class HdfsTest {
 
     @Test
     public void testUploadFile() throws Exception{
-        String src = "media/Shijiebei.png";
+        String src = "media/hdfs/javaapi/In.txt";
         String hdfsDst = "/";
         boolean flag = fs.exists(new Path(src));
         if(!flag){
